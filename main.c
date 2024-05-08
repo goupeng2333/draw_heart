@@ -8,7 +8,7 @@ const float V = 0.053;
 
 const char love_word[4] = {'l','o','v','e'};
 int colors[5] = {10,11,12,13,14};
-const int z[] = {32,32,186,198,186,198,44,206,210,207,178,187,182,196,227,33,32,32};// GBK编码
+const int z[] = {32,32,0xba,0xc6,0xba,0xc6,44,0xce,0xd2,0xcf,0xb2,0xbb,0xb6,0xc4,0xe3,33,32,32};// GBK编码
 
 void SetColor(unsigned short ForeColor,unsigned short BackGroundColor){
     HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -24,8 +24,8 @@ void swap(int *a, int *b){
 }
 
 void shuffle(int *array, int array_size){
-    while(array_size >1){
-        swap(array + (rand() % array_size), array + (--array_size));
+    for(;array_size >1;array_size--){
+        swap(array + (rand() % array_size), array + array_size -1);
     }
 }
 
@@ -86,7 +86,7 @@ void draw_heart(){
 int main(){
     srand(time(NULL));
     draw_heart();
-    printf("°´ÈÎÒâ¼ü¼ÌÐø!");
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c!",0xb0,0xb4,0xc8,0xce,0xd2,0xe2,0xbc,0xfc,0xbc,0xcc,0xd0,0xf8);
     getchar();
     while(1){
         system("cls");
